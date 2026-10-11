@@ -11,7 +11,33 @@ set(TL_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/tl")
 set(DW_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/DemonWare")
 
 include(cmake_files.cmake)
-
+add_executable(BO1Zombies
+    # DemonWare
+    ${DW_DEMONWAREROOT_FILES}
+    ${DW_BDCORE_FILES}
+    ${DW_BDPLATFORM_FILES}
+    ${DW_FILES}
+    # Src folders
+    ${CUBEMAPGENLIB_FILES}
+    ${DYNENTITY_FILES}
+    ${EFFECTSCORE_FILES}
+    ${AIM_ASSIST_FILES}
+    ${BGAME_FILES}
+    ${BINKLIB_FILES}
+    ${CGAME_FILES}
+    ${CGAME_MP_FILES}
+    ${CLIENT_FILES}
+    ${CLIENT_MP_FILES}
+    ${CLIENTSCRIPT_FILES}
+    ${COMMON_FILES}
+    ${DATABASE_FILES}
+    ${DDL_FILES}
+    ${DEMO_FILES}
+    ${DEVGUI_FILES}
+    ${FLAME_FILES}
+    ${GAME_FILES}
+    ${GAME_MP_FILES}
+)
 # phys_gjk.cpp specific flag (experimental)
 set_source_files_properties(
     "${SRC_DIR}/physics/phys_gjk.cpp"

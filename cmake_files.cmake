@@ -1,13 +1,5 @@
 # The engine's source files, by folder (CMakeLists.txt compiles these lists).
-# Prevent this file from breaking compiler checks (try_compile)
-if(CMAKE_PROJECT_NAME STREQUAL "CMAKE_TRY_COMPILE")
-    return()
-endif()
 
-# Ensure DW_DIR has a valid path if it hasn't been set yet
-if(NOT DEFINED DW_DIR)
-    set(DW_DIR "${CMAKE_CURRENT_SOURCE_DIR}/path/to/DemonWare") # Adjust this path to your actual folder
-endif()
 # ----- DemonWare/ (root files) -----
 set(DW
 	"${DW_DIR}/bdConnection.h"
@@ -2975,7 +2967,7 @@ set(TL_PHYSICS_FILES
 # Build target
 # ======================================================================
 
-add_executable(bo1_zombies-1
+add_executable(${BIN_NAME}
 	${DW_DEMONWAREROOT_FILES}
 	${DW_BDCORE_FILES}
 	${DW_BDPLATFORM_FILES}

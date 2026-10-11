@@ -2997,14 +2997,14 @@ add_executable(${BIN_NAME}
 	${GROUPVOICE_FILES}
 	${IK_FILES}
 	${JPEG_FILES}
-	${LIBS_FILES}
+	${LIBS_FILES}       # <--- Added back to compile DemonWare's crypto dependencies
 	${LIVE_FILES}
 	${MINILZO_FILES}
 	${MJPEG_FILES}
 	${MONKEY_FILES}
 	${NVAPI_FILES}
 	${PHYSICS_FILES}
-	${QCOMMON_FILES}
+	${QCOMMON_FILES}    # <--- Added back to compile networking and entity fields (eventEntityStateFields)
 	${RAGDOLL_FILES}
 	${SERVER_FILES}
 	${SERVER_MP_FILES}

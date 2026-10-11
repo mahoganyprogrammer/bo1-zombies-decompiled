@@ -11,6 +11,7 @@ set(TL_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/tl")
 set(DW_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/DemonWare")
 
 include(cmake_files.cmake)
+
 add_executable(BO1Zombies
     # DemonWare
     ${DW_DEMONWAREROOT_FILES}
@@ -37,6 +38,41 @@ add_executable(BO1Zombies
     ${FLAME_FILES}
     ${GAME_FILES}
     ${GAME_MP_FILES}
+    ${GAME_SP_FILES}
+    ${GFX_D3D_FILES}
+    ${GLASS_FILES}
+    ${GROUPVOICE_FILES}
+    ${IK_FILES}
+    ${JPEG_FILES}
+    ${LIBS_FILES}       # <--- Crucial: Compiles LibTomCrypt and LibTomMath for DemonWare crypto
+    ${LIVE_FILES}
+    ${MINILZO_FILES}
+    ${MJPEG_FILES}
+    ${MONKEY_FILES}
+    ${NVAPI_FILES}
+    ${PHYSICS_FILES}
+    ${QCOMMON_FILES}    # <--- Crucial: Resolves eventEntityStateFields and network symbols
+    ${RAGDOLL_FILES}
+    ${SERVER_FILES}
+    ${SERVER_MP_FILES}
+    ${SOUND_FILES}
+    ${SPEEX_FILES}
+    ${STEAM_FILES}
+    ${STRINGED_FILES}
+    ${TRACY_FILES}
+    ${TURRET_FILES}
+    ${UI_FILES}
+    ${UI_MP_FILES}
+    ${UNIVERSAL_FILES}
+    ${VEHICLE_FILES}
+    ${VPX_FILES}
+    ${WIN32_FILES}
+    ${XANIM_FILES}
+    ${ZLIB_FILES}
+    ${TL_TLROOT_FILES}
+    ${TL_BASE_FILES}
+    ${TL_JOBQUEUE_FILES}
+    ${TL_PHYSICS_FILES}
 )
 # phys_gjk.cpp specific flag (experimental)
 set_source_files_properties(

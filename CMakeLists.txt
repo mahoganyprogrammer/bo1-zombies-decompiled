@@ -12,68 +12,6 @@ set(DW_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/DemonWare")
 
 include(cmake_files.cmake)
 
-add_executable(BO1Zombies
-    # DemonWare
-    ${DW_DEMONWAREROOT_FILES}
-    ${DW_BDCORE_FILES}
-    ${DW_BDPLATFORM_FILES}
-    ${DW_FILES}
-    # Src folders
-    ${CUBEMAPGENLIB_FILES}
-    ${DYNENTITY_FILES}
-    ${EFFECTSCORE_FILES}
-    ${AIM_ASSIST_FILES}
-    ${BGAME_FILES}
-    ${BINKLIB_FILES}
-    ${CGAME_FILES}
-    ${CGAME_MP_FILES}
-    ${CLIENT_FILES}
-    ${CLIENT_MP_FILES}
-    ${CLIENTSCRIPT_FILES}
-    ${COMMON_FILES}
-    ${DATABASE_FILES}
-    ${DDL_FILES}
-    ${DEMO_FILES}
-    ${DEVGUI_FILES}
-    ${FLAME_FILES}
-    ${GAME_FILES}
-    ${GAME_MP_FILES}
-    ${GAME_SP_FILES}
-    ${GFX_D3D_FILES}
-    ${GLASS_FILES}
-    ${GROUPVOICE_FILES}
-    ${IK_FILES}
-    ${JPEG_FILES}
-    ${LIBS_FILES}       # <--- Crucial: Compiles LibTomCrypt and LibTomMath for DemonWare crypto
-    ${LIVE_FILES}
-    ${MINILZO_FILES}
-    ${MJPEG_FILES}
-    ${MONKEY_FILES}
-    ${NVAPI_FILES}
-    ${PHYSICS_FILES}
-    ${QCOMMON_FILES}    # <--- Crucial: Resolves eventEntityStateFields and network symbols
-    ${RAGDOLL_FILES}
-    ${SERVER_FILES}
-    ${SERVER_MP_FILES}
-    ${SOUND_FILES}
-    ${SPEEX_FILES}
-    ${STEAM_FILES}
-    ${STRINGED_FILES}
-    ${TRACY_FILES}
-    ${TURRET_FILES}
-    ${UI_FILES}
-    ${UI_MP_FILES}
-    ${UNIVERSAL_FILES}
-    ${VEHICLE_FILES}
-    ${VPX_FILES}
-    ${WIN32_FILES}
-    ${XANIM_FILES}
-    ${ZLIB_FILES}
-    ${TL_TLROOT_FILES}
-    ${TL_BASE_FILES}
-    ${TL_JOBQUEUE_FILES}
-    ${TL_PHYSICS_FILES}
-)
 # phys_gjk.cpp specific flag (experimental)
 set_source_files_properties(
     "${SRC_DIR}/physics/phys_gjk.cpp"
@@ -105,7 +43,6 @@ target_compile_definitions(BO1Zombies PUBLIC
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs")
-target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/tl") 
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libtomcrypt-1.17/src/headers")
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libtommath-1.0")
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libvpx-1.5.0/include")
@@ -113,63 +50,6 @@ target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/li
 # pass -DDXSDK_DIR=<dir> to use an extracted copy instead.
 set(DXSDK_DIR "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)" CACHE PATH "June 2010 DirectX SDK root")
 target_include_directories(BO1Zombies PUBLIC "${DXSDK_DIR}/Include")
-# ----- Include directories -----
-target_include_directories(BO1Zombies PUBLIC
-    "${CMAKE_CURRENT_SOURCE_DIR}"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/aim_assist"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/bgame"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/binklib"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/cgame"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/cgame_mp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/client"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/client_mp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/clientscript"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/common"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/CubeMapGenLib"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/database"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ddl"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/demo"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/devgui"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/DynEntity"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/EffectsCore"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/flame"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/game"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/game_mp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/game_sp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/gfx_d3d"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/glass"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/groupvoice"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ik"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/live"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/mjpeg"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/monkey"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/physics"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/qcommon"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ragdolls"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/server"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/server_mp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/sound"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/stringed"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/turret"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ui"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ui_mp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/universal"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/vehicle"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/vpx"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/win32"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/xanim"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/libs"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libtomcrypt-1.17/src/headers"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libtommath-1.0"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libvpx-1.5.0/include"
-    "${CMAKE_CURRENT_SOURCE_DIR}/tl"
-    "${CMAKE_CURRENT_SOURCE_DIR}/DemonWare"
-)
-
-
-
-
 
 # ----- Library directories -----
 target_link_directories(BO1Zombies PUBLIC "${DXSDK_DIR}/Lib/x86")

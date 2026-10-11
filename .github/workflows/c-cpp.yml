@@ -1,6 +1,6 @@
+
 name: C/C++ CI (Windows MSVC)
-env:
-    DXSDK_DIR: 'C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\'
+
 on:
   push:
     branches: [ "main" ]
@@ -12,12 +12,16 @@ jobs:
     runs-on: windows-2022
 
     steps:
-    - uses: actions/checkout@v4
-         with:
-         submodules: recursive
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    # This action sets up the June 2010 DirectX SDK and configures DXSDK_DIR automatically
+    - name: Setup DirectX SDK
+      uses: kmo2/setup-dxsdk@v1
+
     - name: Configure CMake
-      # Pass /WX- to ensure warnings NEVER fail the build, 
-      # and /wd4996 to disable the specific strcpy/vsprintf deprecation warnings if desired
       run: cmake -B build -G "Visual Studio 17 2022" -A Win32 -DCMAKE_CXX_FLAGS="/WX- /wd4996" -DCMAKE_C_FLAGS="/WX- /wd4996"
 
     - name: Build

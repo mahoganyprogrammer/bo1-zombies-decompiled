@@ -8,14 +8,24 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Configure CMake
-      # Configure for Visual Studio (x86/Win32 as specified in your CMakeLists.txt)
       run: cmake -B build -G "Visual Studio 17 2022" -A Win32
 
     - name: Build
       run: cmake --build build --config Release
+
+    - name: Upload Game Executable & Assets
+      uses: actions/upload-artifact@v4
+      with:
+        name: BO1Zombies-Release
+        path: |
+          build/Release/BO1Zombies.exe
+          build/Release/*.pdb
+          build/Release/mods/
+          build/Release/main/
+        if-no-files-found: error

@@ -69,6 +69,7 @@ target_compile_definitions(BO1Zombies PUBLIC
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs")
+target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/tl") 
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libtomcrypt-1.17/src/headers")
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libtommath-1.0")
 target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/libs/libvpx-1.5.0/include")
@@ -76,6 +77,20 @@ target_include_directories(BO1Zombies PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/li
 # pass -DDXSDK_DIR=<dir> to use an extracted copy instead.
 set(DXSDK_DIR "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)" CACHE PATH "June 2010 DirectX SDK root")
 target_include_directories(BO1Zombies PUBLIC "${DXSDK_DIR}/Include")
+target_include_directories(BO1Zombies PUBLIC 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/gfx_d3d"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/universal"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/bgame"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/physics"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/client"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/xanim"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tl/jobqueue"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tl/physics"
+)
+
+
+
+
 
 # ----- Library directories -----
 target_link_directories(BO1Zombies PUBLIC "${DXSDK_DIR}/Lib/x86")

@@ -13,7 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
+         with:
+         submodules: recursive
     - name: Configure CMake
       # Pass /WX- to ensure warnings NEVER fail the build, 
       # and /wd4996 to disable the specific strcpy/vsprintf deprecation warnings if desired

@@ -1,4 +1,3 @@
-
 name: C/C++ CI (Windows MSVC)
 
 on:
@@ -17,9 +16,22 @@ jobs:
       with:
         submodules: recursive
 
-    # This action sets up the June 2010 DirectX SDK and configures DXSDK_DIR automatically
-    - name: Setup DirectX SDK
-      uses: kmo2/setup-dxsdk@v1
+    - name: Download and Setup DirectX SDK
+      shell: pwsh
+      run: |
+        $webClient = New-Object System.Net.WebClient
+        $url = "https://download.microsoft.com/download/A/E/7/AE743F1F-632B-4809-87A9-AA1BB3458E31/DXSDK_Jun10.exe"
+        $output = "$env:TEMP\DXSDK_Jun10.exe"
+        
+        Write-Host "Downloading DirectX SDK..."
+        $webClient.DownloadFile($url,$output)
+        
+        Write-Host "Extracting DirectX SDK..."
+        # Extract the self-extracting installer silently without launching the GUI wizard
+        Start-Process -FilePath $output -ArgumentList "/u /c /q /t:`"$env:TEMP\DXSDK`"" -Wait -NoNewWindow
+        
+        # Set the DXSDK_DIR environment variable for subsequent steps and CMake
+        echo "DXSDK_DIR=$env:TEMP\DXSDK\" >> $env:GITHUB_ENV
 
     - name: Configure CMake
       run: cmake -B build -G "Visual Studio 17 2022" -A Win32 -DCMAKE_CXX_FLAGS="/WX- /wd4996" -DCMAKE_C_FLAGS="/WX- /wd4996"

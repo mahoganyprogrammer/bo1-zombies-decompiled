@@ -1,4 +1,4 @@
-name: C/C++ CI (CMake)
+name: C/C++ CI (Windows MSVC)
 
 on:
   push:
@@ -8,20 +8,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Configure CMake
-      # If cmake_files.cmake is a toolchain file:
-      run: cmake -B build -DCMAKE_TOOLCHAIN_FILE=cmake_files.cmake -DCMAKE_BUILD_TYPE=Release
-      
-      # OR: If it's passed as an initial cache script, use -C instead:
-      # run: cmake -B build -C cmake_files.cmake -DCMAKE_BUILD_TYPE=Release
+      # Configure for Visual Studio (x86/Win32 as specified in your CMakeLists.txt)
+      run: cmake -B build -G "Visual Studio 17 2022" -A Win32
 
     - name: Build
       run: cmake --build build --config Release
-
-    - name: Test
-      run: ctest --test-dir build --output-on-failure

@@ -2975,7 +2975,7 @@ set(TL_PHYSICS_FILES
 # Build target
 # ======================================================================
 
-add_executable(${BIN_NAME}
+add_executable(bo1_zombies
 	${DW_DEMONWAREROOT_FILES}
 	${DW_BDCORE_FILES}
 	${DW_BDPLATFORM_FILES}
